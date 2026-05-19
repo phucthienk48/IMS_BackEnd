@@ -1,8 +1,5 @@
 const userService = require("../services/user.service");
 
-/* =========================
-   CREATE USER
-========================= */
 exports.createUser = async (req, res) => {
   try {
     const userData = req.body;
@@ -35,9 +32,6 @@ exports.createUser = async (req, res) => {
   }
 };
 
-/* =========================
-   GET ALL USERS
-========================= */
 exports.getAllUsers = async (req, res) => {
   try {
     const users = await userService.getAllUsers();
@@ -55,9 +49,7 @@ exports.getAllUsers = async (req, res) => {
   }
 };
 
-/* =========================
-   GET USER BY ID
-========================= */
+
 exports.getUserById = async (req, res) => {
   try {
     const user = await userService.getUserById(
@@ -83,9 +75,6 @@ exports.getUserById = async (req, res) => {
   }
 };
 
-/* =========================
-   UPDATE USER
-========================= */
 exports.updateUser = async (req, res) => {
   try {
     const updateData = req.body;
@@ -131,9 +120,6 @@ exports.updateUser = async (req, res) => {
   }
 };
 
-/* =========================
-   DELETE USER
-========================= */
 exports.deleteUser = async (req, res) => {
   try {
     const user = await userService.deleteUser(

@@ -1,9 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 
-/* =========================
-   CREATE USER
-========================= */
 exports.createUser = async (userData) => {
   // Check email exists
   const existingEmail = await User.findOne({
@@ -42,23 +39,14 @@ exports.createUser = async (userData) => {
   return userResponse;
 };
 
-/* =========================
-   GET ALL USERS
-========================= */
 exports.getAllUsers = async () => {
   return await User.find().select("-password");
 };
 
-/* =========================
-   GET USER BY ID
-========================= */
 exports.getUserById = async (id) => {
   return await User.findById(id).select("-password");
 };
 
-/* =========================
-   UPDATE USER
-========================= */
 exports.updateUser = async (id, updateData) => {
   // Hash password if updated
   if (updateData.password) {
@@ -80,9 +68,6 @@ exports.updateUser = async (id, updateData) => {
   ).select("-password");
 };
 
-/* =========================
-   DELETE USER
-========================= */
 exports.deleteUser = async (id) => {
   return await User.findByIdAndDelete(id);
 };
