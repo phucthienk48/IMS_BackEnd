@@ -21,12 +21,12 @@ exports.createUser = async (userData) => {
   }
 
   // Hash password
-  const salt = await bcrypt.genSalt(10);
+  // const salt = await bcrypt.genSalt(10);
 
-  userData.password = await bcrypt.hash(
-    userData.password,
-    salt
-  );
+  // userData.password = await bcrypt.hash(
+  //   userData.password,
+  //   salt
+  // );
 
   // Create user
   const user = await User.create(userData);

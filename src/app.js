@@ -19,8 +19,9 @@ app.get('/', (req, res) => {
 });
 
 /*API*/
-app.use("/api/users", require("./routes/user.routes"))
+app.use("/api/users", require("./routes/user.route"))
 app.use("/api/auth", require("./routes/auth.route"));
+app.use("/api/application", require("./routes/application.route"));
 
 app.use((req, res) => {
   res.status(404).json({
