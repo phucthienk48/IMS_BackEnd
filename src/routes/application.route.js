@@ -13,6 +13,8 @@ router.get("/", ApplicationController.getAll);
 // GET BY ID
 router.get("/:id", ApplicationController.getById);
 
+router.get("/user/:id", ApplicationController.getByUser);
+
 // UPDATE
 router.put("/:id", ApplicationController.update);
 

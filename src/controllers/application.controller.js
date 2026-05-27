@@ -57,7 +57,25 @@ class ApplicationController {
       });
     }
   }
+// Lấy hồ sơ theo user
+static async getByUser(req, res) {
+  try {
+    const applications =
+      await ApplicationService.getApplicationByUser(
+        req.params.id
+      );
 
+    return res.status(200).json({
+      success: true,
+      data: applications,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
   // Cập nhật hồ sơ
   static async update(req, res) {
     try {

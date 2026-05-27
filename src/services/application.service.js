@@ -1,3 +1,4 @@
+const mongoose = require("mongoose");
 const Application = require("../models/application.model");
 
 class ApplicationService {
@@ -37,6 +38,15 @@ class ApplicationService {
     return application;
   }
 
+  static async getApplicationByUser(userId) {
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return [];
+    }
+    return await Application.find({
+      student: userId,
+    }).populate("student");
+  }
+  
   // Cập nhật hồ sơ
   static async updateApplication(id, data) {
     const updated = await Application.findByIdAndUpdate(id, data, {
