@@ -31,7 +31,12 @@ const applicationSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      unique: true,
+    },
+
+    topic: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "InternshipTopic",
+      required: false,
     },
 
     major: {
@@ -63,14 +68,19 @@ const applicationSchema = new mongoose.Schema(
     },
 
     status: {
-    type: String,
-    enum: ["chờ duyệt", "đã duyệt", "từ chối"],
-    default: "chờ duyệt",
+      type: String,
+      enum: ["chờ duyệt", "đã duyệt", "từ chối"],
+      default: "chờ duyệt",
     },
   },
   {
     timestamps: true,
-  }
+  },
+);
+
+applicationSchema.index(
+  { student: 1, topic: 1 },
+  { unique: true, partialFilterExpression: { topic: { $exists: true, $ne: null } } }
 );
 
 module.exports = mongoose.model("Application", applicationSchema);

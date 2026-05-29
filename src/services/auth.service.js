@@ -24,7 +24,7 @@ class AuthService {
       email,
       password,              
       avatar: "/data/avatar.jpg", 
-      role: role || "user",
+      role: role || "student",
       isActive: true,
     });
 

@@ -6,14 +6,15 @@ const ApplicationController = require("../controllers/application.controller");
 
 // CREATE
 router.post("/", ApplicationController.create);
+router.post("/topic/:topicId", ApplicationController.createForTopic);
 
 // GET ALL
 router.get("/", ApplicationController.getAll);
 
+router.get("/user/:id", ApplicationController.getByUser);
+
 // GET BY ID
 router.get("/:id", ApplicationController.getById);
-
-router.get("/user/:id", ApplicationController.getByUser);
 
 // UPDATE
 router.put("/:id", ApplicationController.update);
