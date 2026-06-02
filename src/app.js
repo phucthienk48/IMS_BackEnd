@@ -28,6 +28,7 @@ app.use("/api/users", require("./routes/user.route"));
 app.use("/api/auth", require("./routes/auth.route"));
 app.use("/api/application", require("./routes/application.route"));
 app.use("/api/internship-topics", require("./routes/internshipTopic.route"));
+app.use("/api/weekly-reports", require("./routes/weeklyReport.route"));
 
 app.use((req, res) => {
   res.status(404).json({

@@ -115,6 +115,22 @@ class ApplicationService {
     return updated;
   }
 
+  // Cập nhật đánh giá của giảng viên hướng dẫn
+  static async updateEvaluation(id, evaluationData) {
+    const { internshipStatus, score, feedback } = evaluationData;
+    const updated = await Application.findByIdAndUpdate(
+      id,
+      { internshipStatus, score, feedback },
+      { new: true }
+    );
+
+    if (!updated) {
+      throw new Error("Application not found");
+    }
+
+    return updated;
+  }
+
   // Xóa hồ sơ
   static async deleteApplication(id) {
     const deleted = await Application.findByIdAndDelete(id);

@@ -139,6 +139,29 @@ class ApplicationController {
     }
   }
 
+  // Cập nhật đánh giá của giảng viên hướng dẫn
+  static async updateEvaluation(req, res) {
+    try {
+      const { internshipStatus, score, feedback } = req.body;
+      const updated = await ApplicationService.updateEvaluation(req.params.id, {
+        internshipStatus,
+        score,
+        feedback,
+      });
+
+      return res.status(200).json({
+        success: true,
+        message: "Cập nhật đánh giá sinh viên thành công!",
+        data: updated,
+      });
+    } catch (error) {
+      return res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+
   // Xóa hồ sơ
   static async delete(req, res) {
     try {

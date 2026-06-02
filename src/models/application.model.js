@@ -72,6 +72,24 @@ const applicationSchema = new mongoose.Schema(
       enum: ["chờ duyệt", "đã duyệt", "từ chối"],
       default: "chờ duyệt",
     },
+
+    internshipStatus: {
+      type: String,
+      enum: ["đang thực tập", "đã hoàn thành", "tạm dừng"],
+      default: "đang thực tập",
+    },
+
+    score: {
+      type: Number,
+      min: 0,
+      max: 10,
+      default: null,
+    },
+
+    feedback: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,

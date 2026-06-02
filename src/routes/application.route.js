@@ -22,6 +22,9 @@ router.put("/:id", ApplicationController.update);
 // UPDATE STATUS
 router.patch("/:id/status", ApplicationController.updateStatus);
 
+// UPDATE EVALUATION
+router.patch("/:id/evaluation", ApplicationController.updateEvaluation);
+
 // DELETE
 router.delete("/:id", ApplicationController.delete);
 
