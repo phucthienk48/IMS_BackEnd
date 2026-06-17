@@ -124,6 +124,7 @@ class ApplicationController {
       const updated = await ApplicationService.updateStatus(
         req.params.id,
         req.body.status,
+        req.body.approvedBy,
       );
 
       return res.status(200).json({

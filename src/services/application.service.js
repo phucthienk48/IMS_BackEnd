@@ -38,6 +38,7 @@ class ApplicationService {
   static async getAllApplications() {
     return await Application.find()
       .populate("student", "username email role")
+      .populate("approvedBy", "username email")
       .populate({
         path: "topic",
         select: "topicname department position status lecturer",
@@ -53,6 +54,7 @@ class ApplicationService {
   static async getApplicationById(id) {
     const application = await Application.findById(id)
       .populate("student", "username email role")
+      .populate("approvedBy", "username email")
       .populate({
         path: "topic",
         select: "topicname department position status lecturer",
@@ -77,6 +79,7 @@ class ApplicationService {
       student: userId,
     })
       .populate("student")
+      .populate("approvedBy", "username email")
       .populate({
         path: "topic",
         select: "topicname department position status lecturer",
@@ -101,10 +104,17 @@ class ApplicationService {
   }
 
   // Cập nhật trạng thái
-  static async updateStatus(id, status) {
+  static async updateStatus(id, status, approvedBy = null) {
+    const updateData = { status };
+    if (status === "chờ duyệt") {
+      updateData.approvedBy = null;
+    } else if (approvedBy) {
+      updateData.approvedBy = approvedBy;
+    }
+
     const updated = await Application.findByIdAndUpdate(
       id,
-      { status },
+      updateData,
       { new: true },
     );
 

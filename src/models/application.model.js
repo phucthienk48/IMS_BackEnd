@@ -73,6 +73,12 @@ const applicationSchema = new mongoose.Schema(
       default: "chờ duyệt",
     },
 
+    approvedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: false,
+    },
+
     internshipStatus: {
       type: String,
       enum: ["đang thực tập", "đã hoàn thành", "tạm dừng"],
