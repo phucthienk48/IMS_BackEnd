@@ -16,7 +16,7 @@ const uploadDir = path.join(__dirname, "../uploads");
 fs.mkdirSync(uploadDir, { recursive: true });
 app.use("/uploads", express.static(uploadDir));
 app.use("/api/upload", require("./routes/upload.route"));
-app.use("/api/internship-center", require("./routes/internshipCenter.route"));
+app.use("/api/internship-center", ensureDbConnected, require("./routes/internshipCenter.route"));
 
 // Test API
 app.get("/", (req, res) => {

@@ -2,7 +2,7 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 const { spawn } = require("child_process");
-const internshipCenter = require("../config/internshipCenter");
+const InternshipCenterService = require("./internshipCenter.service");
 
 const ROOT_DIR = path.resolve(__dirname, "../../..");
 const SCRIPT_PATH = path.resolve(__dirname, "../scripts/fill-word-template.ps1");
@@ -122,6 +122,7 @@ class WordExportService {
     const app = toPlain(application);
     const plainReports = normalizeList(reports);
     const plainAssignments = normalizeList(assignments);
+    const center = await InternshipCenterService.get();
     validateExportData(type, plainReports, plainAssignments);
 
     const safeStudent = sanitizeName(app.fullName || app.studentCode || "sinh-vien");
@@ -138,7 +139,7 @@ class WordExportService {
 
     const payload = {
       application: app,
-      center: internshipCenter,
+      center,
       reports: plainReports,
       assignments: plainAssignments,
     };
