@@ -10,14 +10,58 @@ const internshipTopicSchema = new mongoose.Schema(
 
     department: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
+      default: "",
     },
 
     position: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
+      default: "",
+    },
+
+    companyName: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    companyAddress: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    companyPhone: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    supervisorName: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    supervisorPhone: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    supervisorEmail: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
     },
 
     topicname: {
@@ -40,8 +84,29 @@ const internshipTopicSchema = new mongoose.Schema(
 
     quantity: {
       type: Number,
-      required: true,
+      required: false,
       min: 1,
+      default: 1,
+    },
+
+    hasOffice: {
+      type: Boolean,
+      default: false,
+    },
+
+    hasComputer: {
+      type: Boolean,
+      default: false,
+    },
+
+    workDaysPerWeek: {
+      type: Number,
+      default: null,
+    },
+
+    workHoursPerDay: {
+      type: Number,
+      default: null,
     },
 
     startday: {

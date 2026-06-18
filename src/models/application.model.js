@@ -16,15 +16,17 @@ const applicationSchema = new mongoose.Schema(
 
     email: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
       lowercase: true,
+      default: "",
     },
 
     sdt: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
+      default: "",
     },
 
     studentCode: {
@@ -39,6 +41,91 @@ const applicationSchema = new mongoose.Schema(
       required: false,
     },
 
+    classCode: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    companyName: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    companyAddress: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    companyPhone: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    supervisorName: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    supervisorPhone: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    supervisorEmail: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
+    hasOffice: {
+      type: Boolean,
+      default: false,
+    },
+
+    hasComputer: {
+      type: Boolean,
+      default: false,
+    },
+
+    projectedTasks: {
+      type: String,
+      default: "",
+      trim: true,
+    },
+
+    workDaysPerWeek: {
+      type: Number,
+      default: null,
+    },
+
+    workHoursPerDay: {
+      type: Number,
+      default: null,
+    },
+
+    startDate: {
+      type: Date,
+      default: null,
+    },
+
+    endDate: {
+      type: Date,
+      default: null,
+    },
+
     major: {
       type: String,
       required: true,
@@ -47,8 +134,9 @@ const applicationSchema = new mongoose.Schema(
 
     course: {
       type: String,
-      required: true,
+      required: false,
       trim: true,
+      default: "",
     },
 
     note: {
@@ -65,6 +153,18 @@ const applicationSchema = new mongoose.Schema(
     transcriptFile: {
       type: String,
       required: true,
+    },
+
+    citizenIdFrontFile: {
+      type: String,
+      required: false,
+      default: "",
+    },
+
+    citizenIdBackFile: {
+      type: String,
+      required: false,
+      default: "",
     },
 
     status: {

@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "uploads/**",
+    ".mongo-data/**",
+    ".mongo-log/**"
+  ],
+  "ext": "js,json"
+}

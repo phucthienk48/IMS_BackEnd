@@ -63,11 +63,11 @@ class WeeklyReportController {
     try {
       const updated = await WeeklyReportService.updateContent(
         req.params.id,
-        req.body.content
+        req.body
       );
       return res.status(200).json({
         success: true,
-        message: "Cập nhật nhật ký thành công!",
+        message: "Cập nhật báo cáo tiến độ thành công!",
         data: updated,
       });
     } catch (error) {

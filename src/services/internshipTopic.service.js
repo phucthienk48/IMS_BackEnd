@@ -1,5 +1,24 @@
 const InternshipTopic = require("../models/internshiptopic.model");
 
+const TOPIC_MANAGED_FIELDS = [
+  "companyName",
+  "companyAddress",
+  "companyPhone",
+  "supervisorName",
+  "supervisorPhone",
+  "supervisorEmail",
+  "hasOffice",
+  "hasComputer",
+];
+
+const sanitizeTopicPayload = (data = {}) => {
+  const payload = { ...data };
+  TOPIC_MANAGED_FIELDS.forEach((field) => {
+    delete payload[field];
+  });
+  return payload;
+};
+
 const InternshipTopicService = {
   // Lấy tất cả
   getAll: async () => {
@@ -15,14 +34,14 @@ const InternshipTopicService = {
 
   // Tạo mới
   create: async (data) => {
-    return await InternshipTopic.create(data);
+    return await InternshipTopic.create(sanitizeTopicPayload(data));
   },
 
   // Cập nhật
   update: async (id, data) => {
     return await InternshipTopic.findByIdAndUpdate(
       id,
-      data,
+      sanitizeTopicPayload(data),
       { new: true }
     );
   },

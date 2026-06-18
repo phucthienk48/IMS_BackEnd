@@ -20,6 +20,23 @@ const weeklyReportSchema = new mongoose.Schema(
       min: 1,
     },
 
+    fromDate: {
+      type: Date,
+      required: false,
+    },
+
+    toDate: {
+      type: Date,
+      required: false,
+    },
+
+    hoursOrSessions: {
+      type: String,
+      required: false,
+      trim: true,
+      default: "",
+    },
+
     content: {
       type: String,
       required: true,
@@ -34,8 +51,8 @@ const weeklyReportSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["chờ duyệt", "đã duyệt", "cần chỉnh sửa"],
-      default: "chờ duyệt",
+      enum: ["chờ duyệt", "đã duyệt", "cần chỉnh sửa", "đã gửi"],
+      default: "đã gửi",
     },
   },
   {
